@@ -1,0 +1,3 @@
+->The ml project using random forest algoritham
+->This project used to  predicts qulaity of the red wine 
+->The results are accurate upto 90-92% 
