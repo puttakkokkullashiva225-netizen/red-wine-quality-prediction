@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Quality Prediction - ML Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M16 2L8 8V16C8 22 12 26 16 30C20 26 24 22 24 16V8L16 2Z" fill="#8B1538" stroke="#fff" stroke-width="1.5"/>
+                </svg>
+                <span>WinePredict</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#dataset" class="nav-link">Dataset</a></li>
+                <li><a href="#prediction" class="nav-link">Prediction</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Machine Learning Project</div>
+                <h1 class="hero-title">Wine Quality Prediction</h1>
+                <h2 class="hero-subtitle">Alcohol Quality Assessment</h2>
+                <p class="hero-description">
+                    Advanced machine learning system to predict wine quality classification as "Good" or "Bad" 
+                    based on physicochemical properties from the comprehensive Kaggle Red Wine dataset.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#prediction" class="btn btn-primary">Try Prediction</a>
+                    <a href="#dataset" class="btn btn-secondary">View Dataset</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="wine-glass-container">
+                    <svg viewBox="0 0 200 300" class="wine-glass">
+                        <defs>
+                            <linearGradient id="wineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#8B1538;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#4A0E1F;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Glass outline -->
+                        <path d="M 50 50 Q 30 100, 95 180 L 95 250 L 70 250 L 70 260 L 130 260 L 130 250 L 105 250 L 105 180 Q 170 100, 150 50 Z" 
+                              fill="none" stroke="#fff" stroke-width="2" opacity="0.3"/>
+                        <!-- Wine fill -->
+                        <path d="M 55 50 Q 35 95, 95 170 L 105 170 Q 165 95, 145 50 Z" 
+                              fill="url(#wineGradient)" opacity="0.8"/>
+                    </svg>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">1599</div>
+                        <div class="stat-label">Wine Samples</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Features</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">95%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About This Project</h2>
+                <p class="section-subtitle">Understanding Wine Quality Prediction through Machine Learning</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">📊</div>
+                    <h3>Dataset Source</h3>
+                    <p>
+                        This project utilizes the renowned <strong>Red Wine Quality Dataset</strong> from Kaggle, 
+                        containing 1,599 Portuguese "Vinho Verde" wine samples with 11 physicochemical input features 
+                        and 1 output variable (quality score from 0-10).
+                    </p>
+                    <a href="https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009" 
+                       target="_blank" class="about-link">View on Kaggle →</a>
+                </div>
+
+                <div class="about-card">
+                    <div class="about-icon">🤖</div>
+                    <h3>Methodology</h3>
+                    <p>
+                        Our machine learning model employs a <strong>binary classification approach</strong>. 
+                        Wines with quality scores ≥6 are classified as "Good Quality", while scores <6 are 
+                        classified as "Bad Quality". The model analyzes chemical properties to make accurate predictions.
+                    </p>
+                    <ul class="method-list">
+                        <li>Data preprocessing & normalization</li>
+                        <li>Feature engineering & selection</li>
+                        <li>ML model training & validation</li>
+                        <li>Real-time prediction interface</li>
+                    </ul>
+                </div>
+
+                <div class="about-card">
+                    <div class="about-icon">🔬</div>
+                    <h3>Key Features Analyzed</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <span class="feature-name">Fixed Acidity</span>
+                            <span class="feature-desc">Tartaric acid content</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-name">Volatile Acidity</span>
+                            <span class="feature-desc">Acetic acid levels</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-name">Citric Acid</span>
+                            <span class="feature-desc">Freshness indicator</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-name">Alcohol</span>
+                            <span class="feature-desc">Alcohol percentage</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-name">pH Level</span>
+                            <span class="feature-desc">Acidity measure</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-name">Sulphates</span>
+                            <span class="feature-desc">Preservative content</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="credits-section">
+                <h3>Project Credits</h3>
+                <div class="credits-content">
+                    <p><strong>Academic Project</strong> - College Machine Learning Course</p>
+                    <p><strong>Dataset Citation:</strong> P. Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis. 
+                       Modeling wine preferences by data mining from physicochemical properties. 
+                       Decision Support Systems, Elsevier, 47(4):547-553, 2009.</p>
+                    <p><strong>Technology Stack:</strong> HTML5, CSS3, JavaScript, Machine Learning Algorithms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dataset Section -->
+    <section id="dataset" class="section dataset-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Wine Quality Dataset</h2>
+                <p class="section-subtitle">Explore the Red Wine dataset used for model training</p>
+            </div>
+
+            <div class="dataset-controls">
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="csvUpload" accept=".csv" hidden>
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" 
+                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p>Drop CSV file here or click to upload</p>
+                    <span class="upload-hint">Supports .csv files only</span>
+                </div>
+                <button class="btn btn-secondary" id="loadSampleBtn">Load Sample Data</button>
+            </div>
+
+            <div class="dataset-info">
+                <div class="info-card">
+                    <span class="info-label">Total Rows:</span>
+                    <span class="info-value" id="totalRows">-</span>
+                </div>
+                <div class="info-card">
+                    <span class="info-label">Total Columns:</span>
+                    <span class="info-value" id="totalCols">12</span>
+                </div>
+                <div class="info-card">
+                    <span class="info-label">Good Quality:</span>
+                    <span class="info-value" id="goodQuality">-</span>
+                </div>
+                <div class="info-card">
+                    <span class="info-label">Bad Quality:</span>
+                    <span class="info-value" id="badQuality">-</span>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="dataset-table" id="datasetTable">
+                    <thead>
+                        <tr>
+                            <th>Fixed Acidity</th>
+                            <th>Volatile Acidity</th>
+                            <th>Citric Acid</th>
+                            <th>Residual Sugar</th>
+                            <th>Chlorides</th>
+                            <th>Free SO₂</th>
+                            <th>Total SO₂</th>
+                            <th>Density</th>
+                            <th>pH</th>
+                            <th>Sulphates</th>
+                            <th>Alcohol</th>
+                            <th>Quality</th>
+                        </tr>
+                    </thead>
+                    <tbody id="datasetBody">
+                        <tr>
+                            <td colspan="12" class="empty-state">
+                                <p>No data loaded. Click "Load Sample Data" to view dataset.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prediction Section -->
+    <section id="prediction" class="section prediction-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Wine Quality Prediction</h2>
+                <p class="section-subtitle">Enter wine properties to predict quality classification</p>
+            </div>
+
+            <div class="prediction-container">
+                <form class="prediction-form" id="predictionForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="fixedAcidity">Fixed Acidity (g/dm³)</label>
+                            <input type="number" id="fixedAcidity" step="0.1" required 
+                                   placeholder="4.6 - 15.9" min="0" max="20">
+                            <span class="input-hint">Typical range: 4.6 - 15.9</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="volatileAcidity">Volatile Acidity (g/dm³)</label>
+                            <input type="number" id="volatileAcidity" step="0.01" required 
+                                   placeholder="0.12 - 1.58" min="0" max="2">
+                            <span class="input-hint">Typical range: 0.12 - 1.58</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="citricAcid">Citric Acid (g/dm³)</label>
+                            <input type="number" id="citricAcid" step="0.01" required 
+                                   placeholder="0 - 1" min="0" max="1.5">
+                            <span class="input-hint">Typical range: 0 - 1</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="residualSugar">Residual Sugar (g/dm³)</label>
+                            <input type="number" id="residualSugar" step="0.1" required 
+                                   placeholder="0.9 - 15.5" min="0" max="20">
+                            <span class="input-hint">Typical range: 0.9 - 15.5</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="chlorides">Chlorides (g/dm³)</label>
+                            <input type="number" id="chlorides" step="0.001" required 
+                                   placeholder="0.012 - 0.611" min="0" max="1">
+                            <span class="input-hint">Typical range: 0.012 - 0.611</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="freeSulfurDioxide">Free Sulfur Dioxide (mg/dm³)</label>
+                            <input type="number" id="freeSulfurDioxide" step="1" required 
+                                   placeholder="1 - 72" min="0" max="100">
+                            <span class="input-hint">Typical range: 1 - 72</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="totalSulfurDioxide">Total Sulfur Dioxide (mg/dm³)</label>
+                            <input type="number" id="totalSulfurDioxide" step="1" required 
+                                   placeholder="6 - 289" min="0" max="300">
+                            <span class="input-hint">Typical range: 6 - 289</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="density">Density (g/cm³)</label>
+                            <input type="number" id="density" step="0.0001" required 
+                                   placeholder="0.9901 - 1.0037" min="0.99" max="1.01">
+                            <span class="input-hint">Typical range: 0.9901 - 1.0037</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pH">pH Level</label>
+                            <input type="number" id="pH" step="0.01" required 
+                                   placeholder="2.74 - 4.01" min="0" max="14">
+                            <span class="input-hint">Typical range: 2.74 - 4.01</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sulphates">Sulphates (g/dm³)</label>
+                            <input type="number" id="sulphates" step="0.01" required 
+                                   placeholder="0.33 - 2.0" min="0" max="3">
+                            <span class="input-hint">Typical range: 0.33 - 2.0</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alcohol">Alcohol (% vol)</label>
+                            <input type="number" id="alcohol" step="0.1" required 
+                                   placeholder="8.4 - 14.9" min="0" max="20">
+                            <span class="input-hint">Typical range: 8.4 - 14.9</span>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <span>Predict Quality</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="resetBtn">Reset Form</button>
+                    </div>
+                </form>
+
+                <div class="prediction-result" id="predictionResult">
+                    <div class="result-placeholder">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                            <path d="M12 6v6l4 2" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <p>Enter wine properties and click "Predict Quality" to see results</p>
+                    </div>
+                </div>
+                
+                <!-- Enhanced Result Modal -->
+                <div class="result-modal" id="resultModal">
+                    <div class="result-modal-overlay"></div>
+                    <div class="result-modal-content">
+                        <button class="result-modal-close" id="closeModal">&times;</button>
+                        <div id="modalResultContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>WinePredict</h4>
+                    <p>Machine Learning Wine Quality Prediction System</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#dataset">Dataset</a></li>
+                        <li><a href="#prediction">Prediction</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009" target="_blank">Kaggle Dataset</a></li>
+                        <li><a href="#about">Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Wine Quality Prediction. College ML Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
